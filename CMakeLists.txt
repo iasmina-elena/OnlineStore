@@ -1,20 +1,23 @@
 cmake_minimum_required(VERSION 3.20)
-project(OnlineStore)
+project(OnlineStore LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
-
-include_directories(include)        # spune compilatorului unde sunt .h-urile
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(OnlineStore
         main.cpp
-        Product.h
         Product.cpp
-        Clothing.h
         Clothing.cpp
-        Footwear.h
         Footwear.cpp
-        Order.h
+        PremiumClothing.cpp
+        PaymentMethod.cpp
+        CashOnDelivery.cpp
+        CardPayment.cpp
+        Customer.cpp
         Order.cpp
-        Store.h
-        Store.cpp)
+        Store.cpp
+)
 
+# dacă header-ele sunt în același folder cu CMakeLists.txt, asta e suficient
+target_include_directories(OnlineStore PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
